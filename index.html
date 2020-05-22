@@ -6,19 +6,21 @@
     <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,user-scalable=0">
     <meta name="description" content="Geunhyeok LEE's Business Card">
     <title>Hello!</title>
-    <!--[if IE]><link rel="icon" href="/favicon.ico"><![endif]-->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="manifest" href="/manifest.json">
+    <!--[if IE]><link rel="icon" href="<%= htmlWebpackPlugin.options.publicPath %>favicon.ico"><![endif]-->
+    <link rel="icon" href="<%= htmlWebpackPlugin.options.publicPath %>favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= htmlWebpackPlugin.options.publicPath %>favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.options.publicPath %>favicon-32x32.png">
+    <link rel="manifest" href="<%= htmlWebpackPlugin.options.publicPath %>manifest.json">
     <meta name="apple-mobile-web-app-title" content="Card">
-    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.options.publicPath %>icons/apple-touch-icon.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>Hello</title>
   </head>
   <body>
-    TBD
+    <div class="qrcode">
+      <img src="<%= htmlWebpackPlugin.options.publicPath %>images/qrcode.png">
+    </div>
   </body>
 </html>
