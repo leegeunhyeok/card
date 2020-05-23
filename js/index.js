@@ -1,4 +1,5 @@
 import d2i from 'dom-to-image'
+import { download } from './utils'
 import '@/css/index.scss'
 
 const app = new function () {
@@ -55,12 +56,12 @@ const app = new function () {
         bottom: '0',
         top: '0',
         transform: 'none',
-        webkitTransform: 'none'
+        webkitTransform: 'none',
+        boxShadow: 'none',
+        marginTop: '0'
       }
     }).then(r => {
-      const img = new Image()
-      img.src = r
-      document.body.appendChild(img)
+      download(r, 'leegeunhyeok.png', 'image/png')
     })
   }
 
