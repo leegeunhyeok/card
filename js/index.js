@@ -19,6 +19,11 @@ const app = new function () {
     els.logo = document.getElementById('logo')
     els.info = document.getElementById('info')
     els.temp = document.getElementById('temp')
+
+    els.card.addEventListener('click', () => {
+      save()
+    })
+
     updateCard()
   }
 
@@ -43,15 +48,14 @@ const app = new function () {
   }
 
   const save = () => {
-    d2i.toPng(this, {
+    d2i.toPng(els.card, {
       style: {
         left: '0',
         right: '0',
         bottom: '0',
         top: '0',
         transform: 'none',
-        webkitTransform: 'none',
-        fontFamily: `'Do Hyeon', sans-serif`
+        webkitTransform: 'none'
       }
     }).then(r => {
       const img = new Image()
