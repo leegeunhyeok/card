@@ -2,12 +2,7 @@ import d2i from 'dom-to-image'
 import '@/css/index.scss'
 
 const app = new function () {
-  const els = {
-    card: document.getElementById('card'),
-    logo: document.getElementById('logo'),
-    info: document.getElementById('info'),
-    temp: document.getElementById('temp')  
-  }
+  const els = {}
 
   const resizeConfig = {
     RESIZE_EVENT_DELAY: 10,
@@ -19,6 +14,14 @@ const app = new function () {
     height: 0
   }
 
+  const init = () => {
+    els.card = document.getElementById('card')
+    els.logo = document.getElementById('logo')
+    els.info = document.getElementById('info')
+    els.temp = document.getElementById('temp')
+    updateCard()
+  }
+
   const resizeHandler = e => {
     clearTimeout(resizeConfig.timeout)
     resizeConfig.timeout = setTimeout(updateCard, resizeConfig.RESIZE_EVENT_DELAY)
@@ -26,6 +29,7 @@ const app = new function () {
 
   const updateCard = () => {
     // Card ratio 1.58:1
+    console.log(els)
     cardSize.width = els.card.getBoundingClientRect().width
     cardSize.height = cardSize.width * 1.58
 
@@ -46,7 +50,8 @@ const app = new function () {
         bottom: '0',
         top: '0',
         transform: 'none',
-        webkitTransform: 'none'
+        webkitTransform: 'none',
+        fontFamily: `'Do Hyeon', sans-serif`
       }
     }).then(r => {
       const img = new Image()
@@ -56,8 +61,7 @@ const app = new function () {
   }
 
   return {
-    init: updateCard,
-    save,
+    init,
     resizeHandler
   }
 }
