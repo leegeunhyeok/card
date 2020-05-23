@@ -65,6 +65,27 @@ html, body, #app {
   }
 }
 
+.menu {
+  &__open {
+    position: relative;
+
+    span {
+      position: absolute;
+      border-radius: 5px;
+      display: block;
+      width: 30px;
+      height: 6px;
+      background-color: #333;
+      transform: rotate(30deg);
+  
+      &:nth-child(1) {
+        transform: rotate(-30deg);
+        margin-left: 30px;
+      }
+    }
+  }
+}
+
 @-webkit-keyframes floating {
   0% {
     margin-top: 0
