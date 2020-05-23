@@ -19,8 +19,20 @@
     <title>Hello</title>
   </head>
   <body>
-    <div class="qrcode">
-      <img src="<%= htmlWebpackPlugin.options.publicPath %>images/qrcode.png">
+    <div id="app">
+      <div id="card" class="card">
+        <div id="logo" class="card__logo">
+          <!-- TODO: Update to profile icon -->
+          <img src="<%= htmlWebpackPlugin.options.publicPath %>images/qrcode.png">
+        </div>
+        <div id="info" class="card__info">
+          <p>leegeunhyeok</p>
+          <p>dev.ghlee@gmail.com</p>
+        </div>
+      </div>
+      <div class="menu">
+        <!-- TBD -->
+      </div>
     </div>
   </body>
 </html>

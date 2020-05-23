@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
+
+@mixin abs-center {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Do Hyeon', sans-serif;
@@ -7,23 +15,51 @@
 $main-color: #408cea;
 $text-color: #ffffff;
 
-html, body {
+html, body, #app {
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
 }
 
-.qrcode {
-  width: 10rem;
-  height: 10rem;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 10px;
-  background-color: $main-color;
+#app {
+  position: relative;
+}
 
-  img {
-    width: 100%;
-    height: 100%;
+.card {
+  position: absolute;
+  width: 85%;
+  border-radius: 8px;
+  background-color: $main-color;
+  color: $text-color;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+
+  @media only screen and (min-width: 645px) {
+    width: 40%;
+  }
+
+  @media only screen  and (min-width: 1224px) {
+    width: 20%;
+  }
+
+  &__logo {
+    @include abs-center;
+    width: 50%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__info {
+    position: absolute;
+
+    p {
+      margin: 5px 0;
+    }
   }
 }
