@@ -1,35 +1,70 @@
+import d2i from 'dom-to-image'
 import '@/css/index.scss'
 
-window.onload = () => {
-  const card = document.getElementById('card')
-  const logo = document.getElementById('logo')
-  const info = document.getElementById('info')
-  const resizeEventDelay = 10
+const app = new function () {
+  const els = {
+    card: document.getElementById('card'),
+    logo: document.getElementById('logo'),
+    info: document.getElementById('info'),
+    temp: document.getElementById('temp')  
+  }
+
+  const resizeConfig = {
+    RESIZE_EVENT_DELAY: 10,
+    timeout: null
+  }
+  
   const cardSize = {
     width: 0,
     height: 0
   }
-  let t // timeout
 
-  const resizeHandler = () => {
+  const resizeHandler = e => {
+    clearTimeout(resizeConfig.timeout)
+    resizeConfig.timeout = setTimeout(updateCard, resizeConfig.RESIZE_EVENT_DELAY)
+  }
+
+  const updateCard = () => {
     // Card ratio 1.58:1
-    cardSize.width = card.getBoundingClientRect().width
+    cardSize.width = els.card.getBoundingClientRect().width
     cardSize.height = cardSize.width * 1.58
 
     // Card Size update
-    card.style.height = cardSize.height + 'px'
-    card.style.padding = cardSize.height * 0.04 + 'px'
+    els.card.style.height = cardSize.height + 'px'
+    els.card.style.padding = cardSize.height * 0.04 + 'px'
 
     // Card layout update
-    logo.style.top = cardSize.height * 0.1 + 'px'
-    info.style.bottom = cardSize.height * 0.03 + 'px'
+    els.logo.style.top = cardSize.height * 0.1 + 'px'
+    els.info.style.bottom = cardSize.height * 0.03 + 'px'
   }
-  resizeHandler()
 
-  window.onresize = () => {
-    clearTimeout(t)
-    t = setTimeout(resizeHandler, resizeEventDelay)
+  const save = () => {
+    d2i.toPng(this, {
+      style: {
+        left: '0',
+        right: '0',
+        bottom: '0',
+        top: '0',
+        transform: 'none',
+        webkitTransform: 'none'
+      }
+    }).then(r => {
+      const img = new Image()
+      img.src = r
+      document.body.appendChild(img)
+    })
   }
+
+  return {
+    init: updateCard,
+    save,
+    resizeHandler
+  }
+}
+
+window.onload = () => {
+  app.init()
+  window.addEventListener('resize', app.resizeHandler)
 }
 
 if ('serviceWorker' in navigator) {
