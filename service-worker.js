@@ -1,11 +1,17 @@
 const VERSION = 'v1'
 const CACHE_NAME = 'cache_' + VERSION
 
+const publicPath = '/card'
+
 const CACHE_LIST = [
+  '/',
   '/favicon.ico',
   '/favicon-32x32.png',
-  '/manifest.json'
-]
+  '/manifest.json',
+  '/bundle.js'
+].map(x => publicPath + x)
+
+const PATTERN = /images|css/
 
 self.addEventListener('install', event => {
   console.log('Service Worker - install', VERSION)
@@ -31,14 +37,19 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   console.log('Service Worker - fetch', event.request.url)
-
-  event.respondWith(
-    caches.open(CACHE_NAME).then(cache => {
-      return fetch(event.request)
-        .then(networkResponse => {
-          cache.put(event.request, networkResponse.clone())
-          return networkResponse
+  const pathName = new URL(event.request.url).pathname
+  
+  if (CACHE_LIST.includes(pathName) || PATTERN.test(pathName)) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(cache => {
+        return cache.match(event.request).then(response => {
+          return response || fetch(event.request)
+            .then(networkResponse => {
+              cache.put(event.request, networkResponse.clone())
+              return networkResponse
+            })
         })
-    })
-  )
+      })
+    )
+  }
 })

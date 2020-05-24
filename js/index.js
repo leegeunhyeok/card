@@ -76,7 +76,10 @@ window.onload = () => {
   window.addEventListener('resize', app.resizeHandler)
 }
 
-if ('serviceWorker' in navigator) {
+if (
+  process.env.NODE_ENV !== 'development' &&
+  'serviceWorker' in navigator
+) {
   navigator.serviceWorker.register('service-worker.js')
     .then(registration => {
       console.log(registration)
