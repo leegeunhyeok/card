@@ -59,6 +59,7 @@ body {
   .card {
     position: absolute;
     width: 80%;
+    max-width: 350px;
     border-radius: 8px;
     background-color: $main-color;
     color: $text-color;
