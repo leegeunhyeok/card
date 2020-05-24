@@ -2,6 +2,18 @@ import d2i from 'dom-to-image'
 import { saveAs } from 'file-saver'
 import '@/css/index.scss'
 
+try {
+  addEventListener(
+    'test',
+    null,
+    Object.defineProperty({}, 'passive', {
+      get: function() {
+        window.supportsPassiveOption = true
+      }
+    })
+  )
+} catch (e) {}
+
 const app = new function () {
   const els = {}
 
@@ -26,6 +38,9 @@ const app = new function () {
     els.me = document.getElementById('me')
     els.info = document.getElementById('info')
     els.menu = document.getElementById('menu')
+    els.save = document.getElementById('save')
+    els.blog = document.getElementById('blog')
+    els.source = document.getElementById('source')
 
     els.card.addEventListener('click', () => {
       save()
@@ -33,6 +48,29 @@ const app = new function () {
 
     els.menu.addEventListener('click', () => {
       toggleMenu()
+    })
+
+    els.save.addEventListener('click', () => {
+      save()
+    })
+
+    els.blog.addEventListener('click', () => {
+      location.href = 'https://geundung.dev'
+    })
+
+    els.source.addEventListener('click', () => {
+      location.href = 'https://github.com/leegeunhyeok/card'
+    })
+
+    // For iOS (:active)
+    document.querySelectorAll('.menu__item').forEach(el => {
+      el.addEventListener(
+        'touchstart',
+        () => {},
+        window.supportsPassiveOption ? {
+          passive: true
+        } : false
+      )
     })
 
     updateCard()

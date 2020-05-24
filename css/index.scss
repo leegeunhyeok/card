@@ -36,8 +36,8 @@ body {
           transition: transform .5s;
 
   &.up {
-    -webkit-transform: translateY(-300px);
-            transform: translateY(-300px);
+    -webkit-transform: translateY(-90%);
+            transform: translateY(-90%);
 
     .menu {
       span {
@@ -67,7 +67,7 @@ body {
             transform: translate(-50%, -50%);
   
     @media only screen and (min-width: 645px) {
-      width: 40%;
+      width: 30%;
     }
   
     @media only screen  and (min-width: 1224px) {
@@ -117,7 +117,7 @@ body {
   
   .menu {
     position: absolute;
-    bottom: -60px;
+    top: calc(100% - 35px);
     width: 100%;
     color: #fff;
   
@@ -134,7 +134,7 @@ body {
         display: block;
         width: 30px;
         height: 6px;
-        background-color: #333;
+        background-color: #333333;
         -webkit-transform: rotate(-30deg);
                 transform: rotate(-30deg);
         -webkit-transition: transform .3s;
@@ -155,7 +155,7 @@ body {
       margin: auto;
 
       @media only screen and (min-width: 645px) {
-        width: 40%;
+        width: 30%;
       }
     
       @media only screen  and (min-width: 1224px) {
@@ -164,9 +164,50 @@ body {
     }
 
     &__item {
-      padding: 10px;
-      border-radius: 12px;
-      background-color: rgba(0, 0, 0, .5);
+      &__panel {
+        font-size: 18px;
+        text-align: center;
+        cursor: pointer;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 12px;
+        background-color: rgba(0, 0, 0, .5);
+        -webkit-transition: background-color .2s;
+                transition: background-color .2s;
+
+        &:active {
+          background-color: rgba(100, 100, 100, .2);
+        }
+
+        &:hover {
+          background-color: rgba(100, 100, 100, .5);
+        }
+
+        p {
+          margin: 0;
+          width: 100%;
+        }
+
+        img {
+          width: 50%;
+        }
+      }
+
+      &-4 {
+        float: left;
+        width: 100%;
+      }
+
+      &-2 {
+        float: left;
+        width: 50%;
+        padding-right: 5px;
+
+        &:nth-child(2) {
+          padding-right: 0;
+          padding-left: 5px;
+        }
+      }
     }
   }
 }
