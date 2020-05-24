@@ -1,12 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: './js/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
-    publicPath: process.env.NODE_ENV === 'production' ? '/card/dist/' : '/'
+    publicPath: process.env.NODE_ENV === 'production' ? '/card/' : '/'
   },
   ...(process.env.NODE_ENV !== 'production' ? { devtool: 'source-map' } : null),
   module: {
@@ -48,6 +49,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
       publicPath: process.env.NODE_ENV === 'production' ? '/card/' : '/'
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'icons', to: 'icons' },
+        { from: 'images', to: 'images' },
+        { from: 'splash', to: 'splash' },
+        { from: 'manifest.json', to: 'manifest.json' },
+        { from: 'service-worker.js', to: 'service-worker.js' },
+        { from: 'favicon-32x32.png', to: 'favicon-32x32.png' },
+        { from: 'favicon.ico', to: 'favicon.ico' }
+      ],
     })
   ],
   devServer: {
