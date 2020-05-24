@@ -16,19 +16,24 @@ const app = new function () {
   }
 
   const init = () => {
+    els.app = document.getElementById('app')
     els.card = document.getElementById('card')
     els.logo = document.getElementById('logo')
     els.info = document.getElementById('info')
-    els.temp = document.getElementById('temp')
+    els.menu = document.getElementById('menu')
 
     els.card.addEventListener('click', () => {
       save()
     })
 
+    els.menu.addEventListener('click', () => {
+      toggleMenu()
+    })
+
     updateCard()
   }
 
-  const resizeHandler = e => {
+  const resizeHandler = () => {
     clearTimeout(resizeConfig.timeout)
     resizeConfig.timeout = setTimeout(updateCard, resizeConfig.RESIZE_EVENT_DELAY)
   }
@@ -63,6 +68,10 @@ const app = new function () {
     }).then(r => {
       download(r, 'leegeunhyeok.png', 'image/png')
     })
+  }
+
+  const toggleMenu = () => {
+    els.app.classList.toggle('up')
   }
 
   return {

@@ -31,74 +31,97 @@ body {
 
 #app {
   position: relative;
-}
+  -webkit-transition: transform .5s;
+          transition: transform .5s;
 
-.card {
-  position: absolute;
-  width: 80%;
-  border-radius: 8px;
-  background-color: $main-color;
-  color: $text-color;
-  top: 50%;
-  left: 50%;
-  box-shadow: 0 0 12px rgba($main-color, .75);
-  -webkit-animation: floating 1s infinite alternate;
-          animation: floating 1s infinite alternate;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  &.up {
+    -webkit-transform: translateY(-300px);
+            transform: translateY(-300px);
 
-  @media only screen and (min-width: 645px) {
-    width: 40%;
-  }
-
-  @media only screen  and (min-width: 1224px) {
-    width: 20%;
-  }
-
-  &__logo {
-    @include abs-center;
-    width: 50%;
-
-    img {
-      width: 100%;
-      height: 100%;
+    .menu {
+      span {
+        -webkit-transform: rotate(30deg);
+                transform: rotate(30deg);
+    
+        &:nth-child(1) {
+          -webkit-transform: rotate(-30deg);
+                 transform: rotate(-30deg);
+        }
+      }
     }
   }
 
-  &__info {
+  .card {
     position: absolute;
-
-    p {
-      margin: 5px 0;
-    }
-  }
-}
-
-.menu {
-  position: absolute;
-  bottom: 30px;
-  width: 100%;
-
-  &__open {
-    cursor: pointer;
-    position: absolute;
+    width: 80%;
+    border-radius: 8px;
+    background-color: $main-color;
+    color: $text-color;
+    top: 50%;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-
-    span {
-      position: relative;
-      border-radius: 5px;
-      display: block;
-      width: 30px;
-      height: 6px;
-      background-color: #333;
-      transform: rotate(-30deg);
+    box-shadow: 0 0 12px rgba($main-color, .75);
+    -webkit-animation: floating 1s infinite alternate;
+            animation: floating 1s infinite alternate;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   
-      &:nth-child(1) {
-        transform: rotate(30deg);
-        margin-left: 22px;
-        top: 6px;
+    @media only screen and (min-width: 645px) {
+      width: 40%;
+    }
+  
+    @media only screen  and (min-width: 1224px) {
+      width: 20%;
+    }
+  
+    &__logo {
+      @include abs-center;
+      width: 50%;
+  
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    &__info {
+      position: absolute;
+  
+      p {
+        margin: 5px 0;
+      }
+    }
+  }
+  
+  .menu {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+  
+    &__open {
+      cursor: pointer;
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+  
+      span {
+        position: relative;
+        border-radius: 5px;
+        display: block;
+        width: 30px;
+        height: 6px;
+        background-color: #333;
+        -webkit-transform: rotate(-30deg);
+                transform: rotate(-30deg);
+        -webkit-transition: transform .3s;
+                transition: transform .3s;
+    
+        &:nth-child(1) {
+          -webkit-transform: rotate(30deg);
+                  transform: rotate(30deg);
+          margin-left: 22px;
+          top: 6px;
+        }
       }
     }
   }
