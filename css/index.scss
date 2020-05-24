@@ -22,6 +22,10 @@ html, body, #app {
 
 body {
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
@@ -46,7 +50,7 @@ body {
     
         &:nth-child(1) {
           -webkit-transform: rotate(-30deg);
-                 transform: rotate(-30deg);
+                  transform: rotate(-30deg);
         }
       }
     }
@@ -117,11 +121,11 @@ body {
         background-repeat: no-repeat;
 
         &.github {
-          background-image: url('/images/github.svg');
+          background-image: url('../images/github.svg');
         }
 
         &.email {
-          background-image: url('/images/email.svg');
+          background-image: url('../images/email.svg');
         }
       }
     }
@@ -187,12 +191,12 @@ body {
         -webkit-transition: background-color .2s;
                 transition: background-color .2s;
 
-        &:active {
-          background-color: rgba(100, 100, 100, .2);
-        }
-
         &:hover {
           background-color: rgba(100, 100, 100, .5);
+        }
+
+        &:active {
+          background-color: rgba(50, 50, 50, .5);
         }
 
         p {
@@ -226,20 +230,20 @@ body {
 
 @-webkit-keyframes floating {
   0% {
-    margin-top: 0
+    margin-top: 0;
   }
 
   100% {
-    margin-top: -10px
+    margin-top: -10px;
   }
 }
 
 @keyframes floating {
   0% {
-    margin-top: 0
+    margin-top: 0;
   }
 
   100% {
-    margin-top: -10px
+    margin-top: -10px;
   }
 }
