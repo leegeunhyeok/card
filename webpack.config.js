@@ -8,7 +8,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: process.env.NODE_ENV === 'production' ? '/card/dist/' : '/'
   },
-  devtool: 'source-map',
+  ...(process.env.NODE_ENV !== 'production' ? { devtool: 'source-map' } : null),
   module: {
     rules: [
       {

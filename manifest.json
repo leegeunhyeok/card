@@ -3,12 +3,12 @@
   "short_name": "Card",
   "icons": [
     {
-      "src": "/pages/card/icons/icon-192x192.png",
+      "src": "/card/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/pages/card/icons/icon-512x512.png",
+      "src": "/card/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -17,5 +17,5 @@
   "background_color": "#408cea",
   "orientation": "any",
   "display": "standalone",
-  "start_url": "/pages/card"
+  "start_url": "/card"
 }
