@@ -1,5 +1,6 @@
 import d2i from 'dom-to-image'
 import { saveAs } from 'file-saver'
+import logo from '@/images/icon.png'
 import '@/css/index.scss'
 
 try {
@@ -36,6 +37,7 @@ const app = new function () {
     els.app = document.getElementById('app')
     els.card = document.getElementById('card')
     els.me = document.getElementById('me')
+    els.logo = document.getElementById('logo')
     els.info = document.getElementById('info')
     els.menu = document.getElementById('menu')
     els.save = document.getElementById('save')
@@ -63,7 +65,7 @@ const app = new function () {
     })
 
     // For iOS (:active)
-    document.querySelectorAll('.menu__item').forEach(el => {
+    document.querySelectorAll('.menu__item__panel').forEach(el => {
       el.addEventListener(
         'touchstart',
         () => {},
@@ -72,6 +74,8 @@ const app = new function () {
         } : false
       )
     })
+
+    els.logo.src = logo
 
     updateCard()
   }
@@ -86,7 +90,6 @@ const app = new function () {
 
   const updateCard = () => {
     // Card ratio 1.58:1
-    console.log(els)
     cardSize.width = els.card.getBoundingClientRect().width
     cardSize.height = cardSize.width * config.ratio
 
@@ -112,19 +115,14 @@ const app = new function () {
         bottom: '0',
         top: '0',
         borderRadius: '0',
+        boxShadow: 'none',
         webkitTransform: `scale(${scale})`,
         transform: `scale(${scale})`,
         webkitTransformOrigin: 'top left',
-        transformOrigin: 'top left',
-        boxShadow: 'none',
-        marginTop: '0',
-        width: card.clientWidth + 'px',
-        height: card.clientHeight + 'px',
+        transformOrigin: 'top left'
       }
     }).then(b => {
-      saveAs(b, 'leegeunhyeok.png', {
-        type: 'image/png'
-      })
+      saveAs(b, 'leegeunhyeok.png')
     })
   }
 

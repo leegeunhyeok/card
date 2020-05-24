@@ -13,6 +13,18 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif|svg|ico)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              useRelativePath: true,
+              limit: 40000 // 40KB
+            }
+          }
+        ]
+      },
+      {
         test: /\.js/,
         exclude: /node_module/,
         use:{
@@ -26,18 +38,7 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ],
-      },
-       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              useRelativePath: true
-            }
-          }
-        ]
-       }
+      }
     ]
   },
   resolve: {
