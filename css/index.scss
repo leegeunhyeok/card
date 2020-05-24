@@ -21,6 +21,7 @@ html, body, #app {
 }
 
 body {
+  overflow: hidden;
   -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
@@ -116,9 +117,9 @@ body {
   
   .menu {
     position: absolute;
-    bottom: 30px;
+    bottom: -60px;
     width: 100%;
-    padding: 12px;
+    color: #fff;
   
     &__open {
       cursor: pointer;
@@ -148,9 +149,22 @@ body {
       }
     }
 
+    &__wrap {
+      width: 80%;
+      padding-top: 50px;
+      margin: auto;
+
+      @media only screen and (min-width: 645px) {
+        width: 40%;
+      }
+    
+      @media only screen  and (min-width: 1224px) {
+        width: 20%;
+      }
+    }
+
     &__item {
-      width: 100%;
-      margin-bottom: 12px;
+      padding: 10px;
       border-radius: 12px;
       background-color: rgba(0, 0, 0, .5);
     }
