@@ -1,5 +1,5 @@
 import d2i from 'dom-to-image'
-import { download } from './utils'
+import { saveAs } from 'file-saver'
 import '@/css/index.scss'
 
 const app = new function () {
@@ -62,8 +62,10 @@ const app = new function () {
   }
 
   const save = () => {
-    const scale = config.cardBaseSize / els.card.clientWidth
-    d2i.toPng(els.card, {
+    const w = els.card.clientWidth
+    const scale = config.cardBaseSize / w
+
+    d2i.toBlob(els.card, {
       width: config.cardBaseSize,
       height: parseInt(config.cardBaseSize * config.ratio),
       style: {
@@ -81,8 +83,10 @@ const app = new function () {
         width: card.clientWidth + 'px',
         height: card.clientHeight + 'px',
       }
-    }).then(r => {
-      download(r, 'leegeunhyeok.png', 'image/png')
+    }).then(b => {
+      saveAs(b, 'leegeunhyeok.png', {
+        type: 'image/png'
+      })
     })
   }
 
