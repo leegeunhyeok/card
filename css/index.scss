@@ -35,7 +35,9 @@ body {
 }
 
 #app {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   -webkit-transition: transform .5s;
           transition: transform .5s;
 
