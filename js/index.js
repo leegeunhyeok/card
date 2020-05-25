@@ -40,6 +40,7 @@ const app = new function () {
     els.logo = document.getElementById('logo')
     els.info = document.getElementById('info')
     els.menu = document.getElementById('menu')
+    els.menuOpen = document.getElementById('menu_open')
     els.save = document.getElementById('save')
     els.blog = document.getElementById('blog')
     els.source = document.getElementById('source')
@@ -48,7 +49,7 @@ const app = new function () {
       save()
     })
 
-    els.menu.addEventListener('click', () => {
+    els.menuOpen.addEventListener('click', () => {
       toggleMenu()
     })
 
@@ -86,6 +87,10 @@ const app = new function () {
       updateCard,
       resizeConfig.RESIZE_EVENT_DELAY
     )
+
+    if (els.app.classList.contains('up')) {
+      els.app.style.transform = `translateY(-${els.menu.clientHeight}px)`
+    }
   }
 
   const updateCard = () => {
@@ -128,6 +133,11 @@ const app = new function () {
 
   const toggleMenu = () => {
     els.app.classList.toggle('up')
+    if (els.app.classList.contains('up')) {
+      els.app.style.transform = `translateY(-${els.menu.clientHeight}px)`
+    } else {
+      els.app.style.transform = `none`
+    }
   }
 
   return {

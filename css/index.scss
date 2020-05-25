@@ -40,9 +40,6 @@ body {
           transition: transform .5s;
 
   &.up {
-    -webkit-transform: translateY(-90%);
-            transform: translateY(-90%);
-
     .menu {
       span {
         -webkit-transform: rotate(30deg);
