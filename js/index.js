@@ -33,6 +33,9 @@ const app = new function () {
     height: 0
   }
 
+  // For iOS Safari issue
+  let isFirst = true
+
   const init = () => {
     els.app = document.getElementById('app')
     els.card = document.getElementById('card')
@@ -107,9 +110,13 @@ const app = new function () {
     els.info.style.bottom = cardSize.height * 0.03 + 'px'
   }
 
-  const save = () => {
+  const save = async () => {
     const w = els.card.clientWidth
     const scale = config.cardBaseSize / w
+
+    if (isFirst) {
+      await d2i.toBlob(els.card).then(() => isFirst = false)
+    }
 
     d2i.toBlob(els.card, {
       width: config.cardBaseSize,
