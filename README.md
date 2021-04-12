@@ -1,7 +1,8 @@
 # card
+
 🤙 Web based business card
 
-[Try now!](https://docs.geundung.dev/card)
+[Try now!](https://card-roan.vercel.app)
 
 <img src="./preview/1.jpg" width="500">
 <br>
