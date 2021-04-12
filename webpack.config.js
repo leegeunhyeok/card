@@ -45,7 +45,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
-      publicPath: process.env.NODE_ENV === 'production' ? '/card/' : '/',
+      publicPath: '/',
     }),
     new CopyPlugin({
       patterns: [

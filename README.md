@@ -2,7 +2,7 @@
 
 🤙 Web based business card
 
-[Try now!](https://card-roan.vercel.app)
+[Try now!](https://ghlee.vercel.app)
 
 <img src="./preview/1.jpg" width="500">
 <br>
