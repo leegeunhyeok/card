@@ -1,7 +1,7 @@
 const VERSION = 'v2';
 const CACHE_NAME = 'cache_' + VERSION;
 
-const publicPath = '/card';
+const publicPath = '/';
 
 const CACHE_LIST = [
   '/',
