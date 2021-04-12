@@ -1,15 +1,13 @@
 const VERSION = 'v2';
 const CACHE_NAME = 'cache_' + VERSION;
 
-const publicPath = '/';
-
 const CACHE_LIST = [
   '/',
   '/favicon.ico',
   '/favicon-32x32.png',
   '/manifest.json',
   '/bundle.js',
-].map((x) => publicPath + x);
+];
 
 const PATTERN = /images|css/;
 
